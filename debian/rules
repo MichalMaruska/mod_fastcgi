@@ -39,13 +39,14 @@ clean:
 	-rm -f *.o mod_fastcgi.so
 	dh_clean build-stamp
 
+APACHE_MODULES_DIR := usr/lib/apache2/modules
 install:
 	dh_testdir
 	dh_installdirs
-	mkdir -p debian/tmp/usr/lib/apache/1.3
+	mkdir -p debian/tmp/$(APACHE_MODULES_DIR)
 	# fixme: libtool?
-	cp .libs/mod_fastcgi.so debian/tmp/usr/lib/apache/1.3/
-	chmod 644 debian/tmp/usr/lib/apache/1.3/mod_fastcgi.so
-	cp debian/500mod_fastcgi.info debian/tmp/usr/lib/apache/1.3/
+	cp .libs/mod_fastcgi.so debian/tmp/$(APACHE_MODULES_DIR)/
+	chmod 644 debian/tmp/$(APACHE_MODULES_DIR)/mod_fastcgi.so
+	cp debian/500mod_fastcgi.info debian/tmp/$(APACHE_MODULES_DIR)/
 
 .PHONY: binary binary-arch binary-indep clean build install
