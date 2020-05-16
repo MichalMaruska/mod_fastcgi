@@ -3,13 +3,13 @@ Section: non-free/web
 Priority: optional
 Maintainer: Sam Vilain <sam@vilain.net>
 Standards-Version: 3.5.8.0
-Build-Depends: apache-dev (>= 1.3.0), debhelper (>> 3.0.0), lynx, libdb2-dev
+Build-Depends: apache2-dev (>= 2.4.43), debhelper (>> 3.0.0), lynx, libdb2-dev
 
 Package: libapache-mod-fastcgi
 Architecture: any
-Depends: apache-common (>= 1.3.0), ${shlibs:Depends}
+Depends: apache2, ${shlibs:Depends}
 Description: FastCGI module for Apache
- This package contains a FastCGI module for the Apache (1.3) web
+ This package contains a FastCGI module for the Apache (2.x) web
  server.
  .
  FastCGI is an open standard for communicating between a web server
