@@ -757,6 +757,13 @@ static const char *process_headers(request_rec *r, fcgi_request *fr)
                 continue;
             }
 
+            /* mmc: Since apache logging is ready to show the User in logs, and I know of no other simple
+               way to put custom info into the log, I push the ``kahua_user' from fcgi application into apache */
+            if (strcasecmp(name, "User") == 0) {
+                r->user = strdup(value);
+                continue;
+            }
+
             /* If the script wants them merged, it can do it */
             ap_table_add(r->err_headers_out, name, value);
             continue;
