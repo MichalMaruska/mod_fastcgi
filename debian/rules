@@ -39,17 +39,18 @@ clean:
 	-rm -f *.o mod_fastcgi.so
 	dh_clean build-stamp
 
+DEB_ROOT := debian/libapache-mod-fastcgi/
 APACHE_MODULES_DIR := usr/lib/apache2/modules
 APACHE_MODULES_AVAILABLE := etc/apache2/mods-available
 install:
 	dh_testdir
 	dh_installdirs
-	mkdir -p debian/tmp/$(APACHE_MODULES_DIR)
-	mkdir -p debian/tmp/$(APACHE_MODULES_AVAILABLE)
+	mkdir -p $(DEB_ROOT)$(APACHE_MODULES_DIR)
+	mkdir -p $(DEB_ROOT)$(APACHE_MODULES_AVAILABLE)
 	# fixme: libtool?
-	cp .libs/mod_fastcgi.so debian/tmp/$(APACHE_MODULES_DIR)/
-	chmod 644 debian/tmp/$(APACHE_MODULES_DIR)/mod_fastcgi.so
-	cp -v --target-directory debian/tmp/$(APACHE_MODULES_AVAILABLE)/ \
+	cp .libs/mod_fastcgi.so $(DEB_ROOT)$(APACHE_MODULES_DIR)/
+	chmod 644 $(DEB_ROOT)$(APACHE_MODULES_DIR)/mod_fastcgi.so
+	cp -v --target-directory $(DEB_ROOT)$(APACHE_MODULES_AVAILABLE)/ \
 		debian/etc/fastcgi.load \
 		debian/etc/fastcgi.conf
 
