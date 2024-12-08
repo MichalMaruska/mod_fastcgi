@@ -2903,10 +2903,34 @@ static int check_access(request_rec *r)
     fr->auth_compat = (dir_config->access_checker_options & FCGI_COMPAT);
 
     if ((res = do_work(r, fr)) != OK)
+    {
+        ap_log_rerror(FCGI_LOG_ERR_NOERRNO, r, "FastCGI: do_work failed! %s", r->uri);
         goto AccessFailed;
+    }
 
     access_allowed = (r->status == 200);
     post_process_auth(fr, access_allowed);
+
+
+    /* mmc!  I can set only 1! */
+    const char* custom_response;
+    if ((custom_response = ap_table_get(fr->authHeaders, "Custom-response")) != NULL) { /* status#url */
+        char* separator;         /*  = strchr(custom_response, '#'); */
+#if 0
+        ap_log_rerror(FCGI_LOG_ERR_NOERRNO, r, "FastCGI: found Custom-response header (%s): %s", r->uri, custom_response);
+#endif
+       /* if (separator) */
+       {
+          int status = strtol(custom_response, &separator, 10);
+          if (*separator == '#')
+          {
+              ap_custom_response(r, status, separator +1);
+          }
+          /* clean! */
+          /* ap_ are obsolete! */
+       }
+       /* apr_table_unset(r->headers_out,  "Custom-response"); */
+    };
 
     /* A redirect shouldn't be allowed during the access check phase */
     if (ap_table_get(r->headers_out, "Location") != NULL) {
@@ -2924,7 +2948,7 @@ AccessFailed:
         return DECLINED;
 
     /* @@@ Probably should support custom_responses */
-    ap_log_rerror(FCGI_LOG_ERR_NOERRNO, r, "FastCGI: access denied: %s", r->uri);
+    /* ap_log_rerror(FCGI_LOG_ERR_NOERRNO, r, "FastCGI: access denied: %s", r->uri); */
     return (res == OK) ? HTTP_FORBIDDEN : res;
 }
 
