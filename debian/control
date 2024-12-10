@@ -3,7 +3,7 @@ Section: non-free/web
 Priority: optional
 Maintainer: Sam Vilain <sam@vilain.net>
 Standards-Version: 3.5.8.0
-Build-Depends: apache2-dev (>= 2.4.43), debhelper (>> 3.0.0), lynx, libdb2-dev
+Build-Depends: apache2-dev (>= 2.4.43), debhelper (>> 3.0.0), lynx, libdb-dev
 
 Package: libapache-mod-fastcgi
 Architecture: any
