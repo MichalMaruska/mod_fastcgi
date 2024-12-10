@@ -1,3 +1,106 @@
+libapache-mod-fastcgi (2.4.8-maruska) unstable; urgency=medium
+
+  [ robs ]
+  * remove CRs
+
+  [ robs-test ]
+  * commit mail test
+
+  [ robs ]
+  * set version - 2.4.2
+  * remove carriage returns
+  * add .deps, .project, .cdtproject, Debug, Release
+  *     Add a -min-server-life option to the FastCgiConfig and     FastCgiServer directives to provide better control of the     restart backoff feature.  Benjamin Osheroff [ben@gimbo.net]
+  * add -min-server-life docs
+  * set version to 2.4.3
+  * [*nix] Don't use suexec when there is no user/group in effect. This change is consistent with Apache2 handling.  Identified by ["Florian Effenberger" <floeff arcor.de>].
+  * email address cleanup and obscuring
+  * Don't count an application exit towards the number of failures when doing restart backoff handling if the exit status is 0.  ["Rob Saccoccio" <robs fastcgi.com>]
+  * move/fix the 'no suexec' path/code just committed
+
+  [ Daniel Smertnig ]
+  * Fastcgi module for Apache 2.2
+
+  [ Peter Zijlstra ]
+  * write_to_client: error out on disconnect
+  * Suport Non Parsed Headers (nph)
+
+  [ Mathieu CARBONNEAUX ]
+  * SNAP-0910052141 patch commited
+
+  [ CARBONNEAUX Mathieu ]
+  * Update README
+  * Update README
+  * Update and rename README to README.md
+  * Update README.md
+  * Update README.md
+  * Rename INSTALL to INSTALL.md
+  * Rename INSTALL.AP2 to INSTALL.AP2.md
+  * Update INSTALL.AP2.md
+  * Update README.md
+  * Update INSTALL.AP2.md
+  * Update INSTALL.md
+  * Update INSTALL.md
+  * Update INSTALL.md
+  * Update INSTALL.md
+  * Update INSTALL.md
+  * Update mod_fastcgi.html
+  * Update README.md
+  * Update mod_fastcgi.html
+  * Update README.md
+  * Update mod_fastcgi.html
+  * Create CONFIG.md
+  * Update CONFIG.md
+  * Update CONFIG.md
+  * Update CONFIG.md
+  * Update CONFIG.md
+  * Update CONFIG.md
+  * Update CONFIG.md
+  * Update CONFIG.md
+  * Update CONFIG.md
+  * Update CONFIG.md
+  * Update CONFIG.md
+  * Update README.md
+  * Update README.md
+  * Update INSTALL.AP2.md
+  * Update INSTALL.md
+
+  [ Mathieu CARBONNEAUX ]
+  * .cvsignore to .gitignore rename
+
+  [ CARBONNEAUX Mathieu ]
+  * Update CONFIG.md
+
+  [ Mathieu CARBONNEAUX ]
+  * apache 2.4 fix
+  * fix .gitignore
+  * fix prinf %d warning
+  * cast from pointer to integer of different size fix
+
+  [ CARBONNEAUX Mathieu ]
+  * Update CHANGES
+  * Update CONFIG.md
+  * Create LICENCE
+  * Update LICENCE
+  * Update README.md
+  * Update README.md
+  * Update README.md
+  * Set theme jekyll-theme-cayman
+  * Set theme jekyll-theme-cayman
+
+  [ Michal Maruska ]
+  * Use "Custom-response" as the http response, including url
+  * FCGI_RESPONDER: push the `User' from fcgi application as http user
+  * Add debian/compat
+  * rules: spaces
+  * Bump the dependency (apache2)
+  * Help copy from libtool dir
+  * Install into apache2 specific dirs
+  * Config files
+  * Correctly install into debian
+
+ -- Michal Maruska <mmaruska@gmail.com>  Tue, 10 Dec 2024 12:26:34 +0100
+
 libapache-mod-fastcgi (2.4.1) unstable; urgency=low
 
   * Debian builds adopted by upstream.  See the CHANGES file for a
